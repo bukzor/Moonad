@@ -1,6 +1,6 @@
 // true is negative, false otherwise
 Int.toNat(a: Int): Pair(Bool, Nat)
-  get a.x a.y = a
-  case a.y:
-  | Pair.new<,>(Bool.false, a.x);
-  | Pair.new<,>(Bool.true, a.y);
+  get a.pos a.neg = a
+  case Nat.sub_rem(a.pos, a.neg) as abs:
+  | left => Pair.new<,>(Bool.false, abs.value);
+  | right => Pair.new<,>(Bool.true, abs.value);
